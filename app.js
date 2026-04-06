@@ -16,9 +16,9 @@ mongoose.connect(process.env.MONGO_URI, {
     pass: process.env.MONGO_PASSWORD,
     useNewUrlParser: true,
     useUnifiedTopology: true
-}, function(err) {
+}, async function(err) {
     if (err) {
-        console.log("GH-200: !! " + err)
+        console.log("error!! " + err)
     } else {
         console.log("MongoDB Connection Successful");
         console.log("Connected DB:", mongoose.connection.name);
