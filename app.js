@@ -20,7 +20,15 @@ mongoose.connect(process.env.MONGO_URI, {
     if (err) {
         console.log("GH-200: !! " + err)
     } else {
-        console.log("MongoDB Connection Successful")
+        console.log("MongoDB Connection Successful");
+        console.log("Connected DB:", mongoose.connection.name);
+        console.log("Connected Host:", mongoose.connection.host);
+
+        const count = await planetModel.countDocuments({});
+        console.log("Planet count:", count);
+
+        const sample = await planetModel.findOne({ id: 2 }).lean();
+        console.log("Planet with id=2:", sample);
     }
 })
 
