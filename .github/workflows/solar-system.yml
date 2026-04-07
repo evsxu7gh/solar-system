@@ -13,7 +13,11 @@ env:
 jobs:
     unit-testing:
         name: Unit Testing
-        runs-on: ubuntu-latest
+        runs-on: ${{ matrix.os }}
+        strategy:
+          matrix:        
+            os: [ ubuntu-latest]
+            node_version: [ 18, 19]
         steps:
         - name: Checkout Repository
           uses: actions/checkout@v4
@@ -21,14 +25,14 @@ jobs:
         - name: Setup NodeJS Version
           uses: actions/setup-node@v3
           with:
-            node-version: 18
+            node-version: ${{ matrix.node_version }} 
     
         - name: Install Dependencies
           run: npm install
     
         - name: Unit Testing
-          run: npx mocha app-test.js --timeout 10000 --reporter spec --exit
-          # run: npm test
+          #run: npx mocha app-test.js --timeout 10000 --reporter spec --exit
+          run: npm test
           
           
         - name: Archive Test Result
