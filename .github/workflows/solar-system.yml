@@ -7,7 +7,7 @@ on:
       - main
       - 'feature/*'
 env:
-  MONGO_URI: 'mongodb+srv://cluster1.rcvcgmj.mongodb.net/superData'  
+  MONGO_URI: 'mongodb+srv://cluster1.rcvcgmj.mongodb.net/SuperData'  
   MONGO_USERNAME: ${{ vars.MONGO_USERNAME }}
   MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
 jobs:
